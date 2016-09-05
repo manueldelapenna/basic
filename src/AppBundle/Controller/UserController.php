@@ -174,11 +174,13 @@ class UserController extends Controller
     public function getExistingRoles()
     {
         $roleHierarchy = $this->container->getParameter('security.role_hierarchy.roles');
+
         $roles = array_keys($roleHierarchy);
 
         foreach ($roles as $role) {
-            $theRoles[$role] = $role;
+            $theRoles[$role . ' [' . implode($roleHierarchy[$role], ", ") . ']'] = $role;
         }
+
         return $theRoles;
     }
 }
