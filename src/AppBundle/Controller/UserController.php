@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * User controller.
  *
- * @Route("/user")
+ * @Route("/admin/user")
  */
 class UserController extends Controller
 {
