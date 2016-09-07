@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Basic{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/daterangepicker.min.css">
         <link rel="stylesheet" href="/css/datatables.min.css">
@@ -58,9 +58,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
-                      </ul>
+                        <li><a role="button" href="#">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
                       {% endif %}
 
                       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
