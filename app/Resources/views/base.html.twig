@@ -30,7 +30,6 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
     <body>
-        <div class="container">
         {% block menu %}
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -45,11 +44,11 @@
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                      <li><a href="{{path('homepage')}}">Home</a></li>
+                      <li><a href="{{path('homepage')}}">Inicio</a></li>
                       <li><a href="#">About</a></li>
                       <li><a href="#">Contact</a></li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href="{{path('user_index')}}">Usuarios</a></li>
                           <li><a href="#">Another action</a></li>
@@ -61,18 +60,32 @@
                         </ul>
                       </li>
                     </ul>
+
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="../navbar-static-top/">Static top</a></li>
-                      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li><a href="{{path('fos_user_security_logout')}}">Logout</a></li>
+                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                      </ul>
+                      {% endif %}
+
+                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('fos_user_profile_edit')}}">Editar Perfil</a></li>
+                                <li><a href="{{path('fos_user_change_password')}}">Cambiar contraseña</a></li> 
+                            </ul>
+                        </li>
+                        <li><a href="{{path('fos_user_security_logout')}}">Salir</a></li>
                       {% else %}
-                        <li><a href="{{path('fos_user_security_login')}}">Login</a></li>
+                        <li><a href="{{path('fos_user_security_login')}}">Entrar</a></li>
                       {% endif %}
                     </ul>
                   </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->
               </nav>
         {% endblock %}
+        <div class="container">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         </div>

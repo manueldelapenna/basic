@@ -117,10 +117,11 @@ class UserController extends Controller
             'mapped' => true,
         ));
 
-
+        $editForm->remove('plainPassword');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
