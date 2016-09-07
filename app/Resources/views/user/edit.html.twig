@@ -2,16 +2,17 @@
 
 {% block body %}
 
-    <h1>User edit</h1>
+    <h1>{{ 'User edit'|trans }}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input class="btn btn-default" type="submit" value="Edit" />
+        <input class="btn btn-default col-sm-offset-2" type="submit" value="{{ 'edit'|trans }}" />
     {{ form_end(edit_form) }}
             
+    <br>
     {{ form_start(delete_form) }}
-        <a class="btn btn-success" href="{{ path('user_index') }}">Back to the list</a>
-        <input class="btn btn-danger" type="submit" value="Delete">
+        <a class="btn btn-success" href="{{ path('user_index') }}">{{ 'back to the list'|trans }}</a>
+        <input class="btn btn-danger" type="submit" value="{{ 'delete'|trans }}">
     {{ form_end(delete_form) }}
 
 {% endblock %}
