@@ -64,6 +64,7 @@ class UserDatatable extends AbstractDatatableView
                                                                     '3', 
                                                                     '4', 
                                                                     '5', 
+                                                                    '6', 
 							        										)
 							        								),
 							        						),
@@ -77,6 +78,7 @@ class UserDatatable extends AbstractDatatableView
                                                                     '3', 
                                                                     '4', 
                                                                     '5', 
+                                                                    '6', 
 							        										)
 							        								)
 							        						),
@@ -137,8 +139,12 @@ class UserDatatable extends AbstractDatatableView
             	'editable' => false,
                 'width' => '130px', 
             ))
-            ->add('enabled', 'column', array(
+            ->add('enabled', 'boolean', array(
                 'title' => 'Habilitado',
+                'true_icon' => 'glyphicon glyphicon-ok',
+                'false_icon' => 'glyphicon glyphicon-remove',
+                'true_label' => 'Sí',
+                'false_label' => 'No',
             	'editable' => false,
                 'width' => '80px', 
                 'filter' => array(
@@ -149,6 +155,12 @@ class UserDatatable extends AbstractDatatableView
                                                 )
                                    )
 
+            ))
+            ->add('roles', 'column', array(
+                'visible'=> false,
+                'title' => 'Roles',
+            	'editable' => false,
+                'width' => '130px', 
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
