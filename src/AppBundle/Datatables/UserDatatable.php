@@ -61,6 +61,9 @@ class UserDatatable extends AbstractDatatableView
 			        										'columns' => array(
 			        												'1', 
 			        												'2', 
+                                                                    '3', 
+                                                                    '4', 
+                                                                    '5', 
 							        										)
 							        								),
 							        						),
@@ -71,6 +74,9 @@ class UserDatatable extends AbstractDatatableView
 			        										'columns' => array(
 			        												'1', 
 			        												'2', 
+                                                                    '3', 
+                                                                    '4', 
+                                                                    '5', 
 							        										)
 							        								)
 							        						),
@@ -109,10 +115,40 @@ class UserDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'width' => '40px',  
             ))
             ->add('username', 'column', array(
-                'title' => 'Username',
+                'title' => 'Nombre de usuario',
             	'editable' => false,
+                'width' => '130px', 
+            ))
+            ->add('email', 'column', array(
+                'title' => 'Email',
+            	'editable' => false,
+                'width' => '110px', 
+            ))
+            ->add('firstname', 'column', array(
+                'title' => 'Nombre',
+            	'editable' => false,
+                'width' => '130px', 
+            ))
+            ->add('lastname', 'column', array(
+                'title' => 'Apellido',
+            	'editable' => false,
+                'width' => '130px', 
+            ))
+            ->add('enabled', 'column', array(
+                'title' => 'Habilitado',
+            	'editable' => false,
+                'width' => '80px', 
+                'filter' => array(
+                                'select', array(
+                                                'search_type' => 'eq',
+                                                'select_options' => array(
+                                                                          '' => 'Todos', '1' => 'Sí', '0' => 'No'),
+                                                )
+                                   )
+
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

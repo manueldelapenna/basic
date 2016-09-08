@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+
+    {{ form_start(delete_form) }}
+        <a class="btn btn-success" href="{{ path('user_index') }}">{{ 'back to the list'|trans }}</a>
+        <a class="btn btn-primary" href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'edit'|trans }}</a>
+
+        {% if app.user.id != user.id %}
+            <input class="btn btn-danger" type="submit" value="{{ 'delete'|trans }}" onclick="return confirm('{{ 'Are you sure?'|trans }}')">
+        {% endif %}
+    {{ form_end(delete_form) }}
+
+    <h1>{{ 'User'|trans }}</h1>
 
     <table>
         <tbody>
@@ -28,17 +38,7 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            
+
+    
 {% endblock %}

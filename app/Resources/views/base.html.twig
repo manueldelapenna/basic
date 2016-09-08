@@ -81,8 +81,45 @@
               </nav>
         {% endblock %}
         <div class="container">
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+
+                <div class="alert alert-success">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>{{ flashMessage }}</strong>
+                </div>
+
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('info') %}
+
+                <div class="alert alert-info">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>{{ flashMessage }}</strong>
+                </div>
+
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+
+                <div class="alert alert-warning">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>{{ flashMessage }}</strong>
+                </div>
+
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('danger') %}
+
+                <div class="alert alert-danger">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>{{ flashMessage }}</strong>
+                </div>
+
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
         </div>
     </body>
 </html>

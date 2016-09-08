@@ -71,6 +71,8 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->set('success', 'Usuario creado correctamente');
 
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
@@ -126,6 +128,8 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->set('success', 'Usuario actualizado correctamente');
+
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
@@ -151,6 +155,9 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->set('success', 'Usuario borrado correctamente');
+            
         }
 
         return $this->redirectToRoute('user_index');
