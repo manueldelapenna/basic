@@ -136,7 +136,7 @@ class UserDatatable extends AbstractDatatableView
             ))
             ->add('lastname', 'column', array(
                 'title' => 'Apellido',
-            	'editable' => false,
+            	'editable' => true,
                 'width' => '130px', 
             ))
             ->add('enabled', 'boolean', array(
