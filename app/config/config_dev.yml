@@ -37,4 +37,4 @@ monolog:
 swiftmailer:
     transport: gmail
     username:  manueldelapenna@gmail.com
-    password:  manuel31042332
+    password:  
